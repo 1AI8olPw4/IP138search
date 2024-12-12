@@ -63,6 +63,5 @@ java -jar IP138search.jar
 
 ## 注意事项
 - 确保Java环境正确安装
-- 运行jar文件时确保lib目录在同级目录下
 - 首次运行需要配置API Token
 - 导出的CSV文件支持Excel直接打开
