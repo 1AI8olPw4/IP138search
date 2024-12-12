@@ -22,3 +22,6 @@ Thumbs.db
 # 配置文件
 config.properties
 **/token.txt 
+
+# 持久化存储
+config.token 

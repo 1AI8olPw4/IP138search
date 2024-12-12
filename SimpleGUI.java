@@ -20,10 +20,11 @@ public class SimpleGUI extends JFrame {
     private JTable resultTable;
     private DefaultTableModel tableModel;
     private JButton settingsButton;
-    private static String currentToken = ""; // 需要配置IP138 API Token
+    private static String currentToken = loadToken(); // 修改为从文件加载token
     private final ExecutorService executorService = Executors.newFixedThreadPool(3); // 使用3个线程的线程池
     private JProgressBar progressBar; // 添加进度条
     private JButton exportButton;
+    private static final String TOKEN_FILE = "config.token";
     
     public SimpleGUI() {
         // 设置窗口标题
@@ -56,7 +57,7 @@ public class SimpleGUI extends JFrame {
         inputPanel.add(settingsButton);
         inputPanel.add(exportButton);
         
-        // 添加进度条到输入��板
+        // 添加进度条到输入面板
         progressBar = new JProgressBar();
         progressBar.setStringPainted(true);
         progressBar.setVisible(false);
@@ -406,6 +407,7 @@ public class SimpleGUI extends JFrame {
             String newToken = tokenField.getText().trim();
             if (!newToken.isEmpty()) {
                 currentToken = newToken;
+                saveToken(newToken); // 保存token到文件
                 dialog.dispose();
             }
         });
@@ -550,6 +552,30 @@ public class SimpleGUI extends JFrame {
             return "\"" + value + "\"";
         }
         return value;
+    }
+    
+    // 添加加载token的方法
+    private static String loadToken() {
+        try {
+            File file = new File(TOKEN_FILE);
+            if (file.exists()) {
+                try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                    return reader.readLine();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ""; // 如果没有保存的token，返回空字符串
+    }
+    
+    // 添加保存token的方法
+    private void saveToken(String token) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(TOKEN_FILE))) {
+            writer.write(token);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     public static void main(String[] args) {
