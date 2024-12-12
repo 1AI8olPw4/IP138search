@@ -20,7 +20,7 @@ public class SimpleGUI extends JFrame {
     private JTable resultTable;
     private DefaultTableModel tableModel;
     private JButton settingsButton;
-    private static String currentToken = "2c2adc6010af61b1524ffdad54edfcca"; // 默认token
+    private static String currentToken = ""; // 需要配置IP138 API Token
     private final ExecutorService executorService = Executors.newFixedThreadPool(3); // 使用3个线程的线程池
     private JProgressBar progressBar; // 添加进度条
     private JButton exportButton;
@@ -56,7 +56,7 @@ public class SimpleGUI extends JFrame {
         inputPanel.add(settingsButton);
         inputPanel.add(exportButton);
         
-        // 添加进度条到输入面板
+        // 添加进度条到输入��板
         progressBar = new JProgressBar();
         progressBar.setStringPainted(true);
         progressBar.setVisible(false);

@@ -18,3 +18,7 @@ lib/
 # 系统文件
 .DS_Store
 Thumbs.db 
+
+# 配置文件
+config.properties
+**/token.txt 
