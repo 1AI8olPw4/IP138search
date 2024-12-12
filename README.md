@@ -53,6 +53,9 @@ java -jar IP138search.jar
 
 3. 查看结果后可点击"导出结果"保存为CSV文件
 
+### 运行效果
+![IP查询工具界面](screenshots/demo.png)
+
 ## 系统要求
 - JDK 1.8+
 - 网络连接
